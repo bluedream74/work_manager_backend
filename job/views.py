@@ -83,6 +83,18 @@ class AdminJobView(APIView):
     serializer.save()
     
     return Response(serializer.data)
+  
+  def delete(self, request, job_id):
+    try:
+      print("this is job_id======", job_id)
+      job = Job.objects.get(pk=job_id)
+    except Job.DoesNotExist:
+      return Response({
+        'job_id': 'Not Found'
+      }, status=status.HTTP_404_NOT_FOUND)
+    job.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+  
 
 class JobDetailView(APIView):
   permission_classes = [IsAuthenticated]

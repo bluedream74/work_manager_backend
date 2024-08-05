@@ -13,9 +13,15 @@ class Job(models.Model):
     (3, '作業中'),
     (4, '作業終了'),
   ]
+
   status = models.IntegerField(choices=STATUS_CHOICES, default=1)
   deadline = models.DateField(null=True)
   budget = models.IntegerField(default=0)
+
+  pickup = models.CharField(max_length=250, default='')
+  delivery = models.CharField(max_length=250, default='')
+  work_details = models.CharField(max_length=250, default='')
+
   estimate_original_image_url = models.ImageField(default='')
   estimate_result_image_url = models.ImageField(default='')
 
