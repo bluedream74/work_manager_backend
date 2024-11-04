@@ -21,7 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
   email = serializers.EmailField(required=True, max_length=528)
   name = serializers.CharField(required=True, max_length=10)
-  tel = serializers.CharField(required=True, max_length=10)
+  tel = serializers.CharField(required=True, max_length=20)
   address = serializers.CharField(required=False, max_length=50, allow_blank=True)
 
   class Meta:
